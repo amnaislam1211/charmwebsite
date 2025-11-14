@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute beaded jewellery 🎀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <img src="images/logo.gif" alt="Logo" class="logo">
+
+    <h1>Get Cute Customized Beaded Jewellery! 🎀</h1>
+<p class="pink-text">
+Order handmade aesthetic bracelets, necklaces, phone charms, and matching sets — super cute, affordable and perfect for gifting 💗
+</p>
+<h2 class="pink-text">Our Cute Beaded Jewellery Styles 💖</h2>
+<p class="pink-text">Choose your favourite style — name bracelets, pastel beads, aesthetic charms & more!</p>
+
+  </header>
+
+  <section id="gallery">
+  <h2>Our Cute Beaded Jewellery Styles 💖</h2>
+  <p class="pink-text">Choose from bracelets, phone charms, necklaces, and fully personalized designs!</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <span class="heart">💗</span>
+      <img src="images/bracelet1.png" alt="Beaded Bracelet">
+      <p>Pastel Name Bracelet</p>
+    </div>
+
+    <div class="card">
+      <span class="heart">💞</span>
+      <img src="images/phonecharm1.png" alt="Phone Charm">
+      <p>Aesthetic Phone Charm</p>
+    </div>
+
+    <div class="card">
+      <span class="heart">💖</span>
+      <img src="images/necklace1.png" alt="Necklace">
+      <p>Beaded Necklace</p>
+    </div>
+
+    <div class="card">
+      <span class="heart">💕</span>
+      <img src="images/bffset1.png" alt="Matching Set">
+      <p>BFF / Couple Matching Set</p>
+    </div>
+
+    <div class="card">
+      <span class="heart">💓</span>
+      <img src="images/charmset.png" alt="Charms">
+      <p>Kawaii Charms Mix</p>
+    </div>
+
+    
+  </div>
+
+
+
+</section>
+<section id="custom">
+  <h2>Fully Personalized Design</h2>
+  <p class="pink-text">Send us your reference picture (bracelet, phone charm, anime pose, aesthetic style, etc.) and we will create a custom e-card or charm design just for you! 💖✨</p>
+
+  <div class="custom-box">
+      <label for="refImage" class="upload-label">Upload Your Reference Image</label>
+      <input type="file" id="refImage" accept="image/*">
+
+      <textarea id="customNote" placeholder="Write any details… (colors, style, character, message)"></textarea>
+
+      <button class="send-btn">Send Request</button>
+
+      <div id="preview-area">
+          <p>Your selected image will show here 👇</p>
+          <img id="preview-img" src="" alt="">
+      </div>
+  </div>
+</section>
+
+  </section>
+<section id="loveGames">
+  <h2 class="pink-text">Mini Love Games 💖</h2>
+    <p class="pink-text">Play fun little games ,also create mini games and send cute digital wishes to your special someone! 🎀</p>
+  <div class="games">
+    <div class="game-card">
+      <h3>Love Calculator 💌</h3>
+      <a href="love-calculator.html" class="game-btn">Play Now</a>
+    </div>
+    <div class="game-card">
+      <h3>Matching Hearts 💖</h3>
+      <a href="matching-hearts.html" class="game-btn">Play Now</a>
+    </div>
+    <div class="game-card">
+      <h3>spin the love wheel 🎀</h3>
+      <a href="couple-quiz.html" class="game-btn">Play Now</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Order Form Section -->
+ 
+  
+
+    <section id="Send">
+  <h2>Design Your Personalized Charm & Send Instantly 🎀</h2>
+
+  <form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
+    
+    <label>Name of Recipient:</label>
+    <input type="text" name="recipient" placeholder="e.g., Sara" required>
+<label>Contact Number:</label>
+<input type="tel" name="number" id="numberInput" placeholder="e.g., +923001234567" required>
+    <label>Message / Note:</label>
+    <input type="text" name="message" placeholder="Write your special note..." required>
+
+    <label>Upload Reference Photo (optional):</label>
+    <input type="file" name="photo" accept="image/*" id="photoInput">
+
+    <label>Choose Charm Style:</label>
+    <select name="template" required id="templateSelect">
+      <option value="beaded">Beaded Bracelet</option>
+      <option value="phoneCharm">Phone Charm</option>
+      <option value="initialsBracelet">Custom Initials</option>
+      <option value="kawaiiCharm">Kawaii Mini Charms</option>
+      <option value="pastelButterfly">Pastel Butterfly</option>
+      <option value="sparklyCrystal">Sparkly Crystal</option>
+    </select>
+    <label>Email for Delivery:</label>
+    <input type="email" name="email" placeholder="example@mail.com" required>
+
+    <button type="submit">Send Order</button>
+  </form>
+
+  <!-- Surprise Charm Idea -->
+  <div style="text-align:center; margin-top: 20px;">
+    <button onclick="showCharmIdea()" class="personal-btn">Surprise Me With Charm Idea 💖</button>
+    <p id="surpriseText" class="pink-text"></p>
+  </div>
+
+  <!-- Instagram DM Call-to-Action -->
+  <section id="zaraa0.00">
+    <div class="instagram-section">
+      <div class="instagram-card">
+        <p>If you want a fully personalized charm, bracelet, or mini custom design, follow me and DM me 💌</p>
+        <a href="https://instagram.com/zaraa0.00" target="_blank" class="dm-btn">
+          Click here to DM @zaraa0.00
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Preview -->
+  <div id="preview">
+    <h3>Photo Preview:</h3>
+    <img id="previewImage" src="" alt="Photo Preview">
+  </div>
+</section>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Cute pixiwish e-card. All rights reserved 🎀</p>
+  </footer>
+
+  <!-- Optional JS for live preview -->
+  <script>
+    const photoInput = document.getElementById('photoInput');
+    const previewImage = document.getElementById('previewImage');
+
+    photoInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        previewImage.src = URL.createObjectURL(file);
+      } else {
+        previewImage.src = '';
+      }
+    });
+  </script>
+  
+
+</body>
+</html>
