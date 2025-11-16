@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Beaded Jewellery 🎀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <img src="images/logo.gif" alt="Logo" class="logo">
+    <h1>Get Cute Customized Beaded Jewellery! 🎀</h1>
+    <p class="pink-text">
+      Order handmade aesthetic bracelets, necklaces, phone charms, and matching sets — super cute, affordable and perfect for gifting 💗
+    </p>
+  </header>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>Our Cute Beaded Jewellery Styles 💖</h2>
+    <p class="pink-text">Choose from bracelets, phone charms, necklaces, and fully personalized designs!</p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="images/bracelet1.png" alt="Beaded Bracelet">
+        <p>Pastel Name Bracelet</p>
+      </div>
+      <div class="card">
+        <img src="images/phonecharm1.png" alt="Phone Charm">
+        <p>Aesthetic Phone Charm</p>
+      </div>
+      <div class="card">
+        <img src="images/necklace1.png" alt="Necklace">
+        <p>Beaded Necklace</p>
+      </div>
+      <div class="card">
+        <img src="images/bffset1.png" alt="Matching Set">
+        <p>BFF / Couple Matching Set</p>
+      </div>
+      <div class="card">
+        <img src="images/charmset.png" alt="Charms">
+        <p>Kawaii Charms Mix</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Games Section -->
+  <section id="loveGames">
+    <h2 class="pink-text">Mini Love Games 💖</h2>
+    <p class="pink-text">Play fun little games and send cute digital wishes! 🎀</p>
+    <div class="games">
+      <div class="game-card">
+        <h3>Love Calculator 💌</h3>
+        <a href="love-calculator.html" class="game-btn">Play Now</a>
+      </div>
+      <div class="game-card">
+        <h3>Matching Hearts 💖</h3>
+        <a href="matching-hearts.html" class="game-btn">Play Now</a>
+      </div>
+      <div class="game-card">
+        <h3>Spin the Love Wheel 🎀</h3>
+        <a href="couple-quiz.html" class="game-btn">Play Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Form Section -->
+  <section id="Send">
+    <h2>Design Your Personalized Charm & Send Instantly 🎀</h2>
+
+    <form action="send-order.php" method="POST" enctype="multipart/form-data">
+      <label>Name of Recipient:</label>
+      <input type="text" name="recipient" placeholder="e.g., Sara" required>
+
+      <label>Contact Number:</label>
+      <input type="tel" name="number" placeholder="e.g., +923001234567" required>
+
+      <label>Address:</label>
+      <input type="text" name="address" placeholder="Delivery Address" required>
+
+      <label>Message / Note:</label>
+      <input type="text" name="message" placeholder="Write your special note...">
+
+      <label>Choose Charm Style:</label>
+      <select name="template">
+        <option value="beaded">Beaded Bracelet</option>
+        <option value="phoneCharm">Phone Charm</option>
+        <option value="initialsBracelet">Custom Initials</option>
+        <option value="kawaiiCharm">Kawaii Mini Charms</option>
+        <option value="pastelButterfly">Pastel Butterfly</option>
+        <option value="sparklyCrystal">Sparkly Crystal</option>
+      </select>
+
+      <label>Your Email:</label>
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <label>Upload Reference Image (Optional):</label>
+      <input type="file" name="photo" accept="image/*" id="customPhoto">
+
+      <div id="preview">
+        <img id="customPreview" src="" alt="Photo Preview" style="max-width:150px; display:none; margin-top:10px;">
+      </div>
+
+      <button type="submit">Send Order 💌</button>
+    </form>
+  </section>
+
+  <!-- JS Preview -->
+  <script>
+    const customPhoto = document.getElementById('customPhoto');
+    const customPreview = document.getElementById('customPreview');
+
+    customPhoto.addEventListener('change', () => {
+      const file = customPhoto.files[0];
+      if(file){
+        customPreview.src = URL.createObjectURL(file);
+        customPreview.style.display = "block";
+      } else {
+        customPreview.style.display = "none";
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Cute Pixiwish. All rights reserved 🎀</p>
+  </footer>
+
+</body>
+</html>
