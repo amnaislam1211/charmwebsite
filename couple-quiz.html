@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin the Love Wheel 🎀</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe0f0, #ffd6e8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+    text-align: center;
+  }
+
+  h1 {
+    color: #ff69b4;
+    margin-bottom: 10px;
+  }
+
+  /* Pointer */
+  .pointer {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid #ff1493; /* points downward */
+    margin-bottom: -15px; /* slightly overlap the wheel */
+    z-index: 10;
+  }
+
+  canvas {
+    border-radius: 50%;
+  }
+
+  button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: #ff69b4;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background-color: #ff1493;
+    transform: scale(1.05);
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ff1493;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Spin the Love Wheel 🎀</h1>
+<p>Click the wheel to see your cute surprise!</p>
+
+<!-- Pointer -->
+<div class="pointer"></div>
+
+<!-- Wheel -->
+<canvas id="wheel" width="300" height="300"></canvas>
+
+<button onclick="spinWheel()">Spin 💖</button>
+<div id="result"></div>
+
+<script>
+const canvas = document.getElementById('wheel');
+const ctx = canvas.getContext('2d');
+const options = ['Send a Hug 🤗', 'Compliment Your Crush 💌', 'Virtual Kiss 😘', 'Heart Emoji ❤️', 'Sweet Message 💖', 'Cute Gif 🎀'];
+const colors = ['#ffb6c1','#ff69b4','#ff8fcf','#ffc0cb','#ff99c8','#ff66b2'];
+const numOptions = options.length;
+let startAngle = 0;
+let spinning = false;
+
+// Draw the wheel
+function drawWheel() {
+  const anglePerSlice = 2 * Math.PI / numOptions;
+  for(let i=0; i<numOptions; i++) {
+    ctx.beginPath();
+    ctx.moveTo(150,150);
+    ctx.arc(150,150,150,startAngle + i*anglePerSlice, startAngle + (i+1)*anglePerSlice);
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fill();
+    ctx.stroke();
+
+    // Text
+    ctx.save();
+    ctx.translate(150,150);
+    ctx.rotate(startAngle + (i+0.5)*anglePerSlice);
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 14px Arial";
+    ctx.fillText(options[i], 140, 5);
+    ctx.restore();
+  }
+}
+
+// Spin logic
+function spinWheel() {
+  if(spinning) return;
+  spinning = true;
+  let spins = Math.floor(Math.random() * 3 + 3); // 3-5 full spins
+  let extraAngle = Math.random() * 2 * Math.PI;
+  let finalAngle = startAngle + spins*2*Math.PI + extraAngle;
+  let duration = 4000;
+
+  const startTime = performance.now();
+
+  function animate(now){
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed/duration,1);
+    const ease = 1 - Math.pow(1 - progress, 3); // ease out
+    const angle = startAngle + (finalAngle - startAngle) * ease;
+    ctx.clearRect(0,0,300,300);
+    startAngle = angle;
+    drawWheel();
+
+    if(progress < 1){
+      requestAnimationFrame(animate);
+    } else {
+      spinning = false;
+      const anglePerSlice = 2*Math.PI/numOptions;
+      const winningIndex = Math.floor((2*Math.PI - (angle % (2*Math.PI))) / anglePerSlice) % numOptions;
+      document.getElementById('result').innerText = `🎉 Your surprise: ${options[winningIndex]} 🎉`;
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+// Initial draw
+drawWheel();
+</script>
+
+</body>
+</html>
+
+
